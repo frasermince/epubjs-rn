@@ -3,6 +3,7 @@
   "version": "0.1.5",
   "repository": "https://github.com/futurepress/epubjs-rn",
   "main": "./components/index.js",
+  "description": "Epub view for react-native",
   "scripts": {
     "start": "node EpubReader/node_modules/react-native/local-cli/cli.js start",
     "contents": "webpack --config contents/webpack.config.js",
