@@ -317,7 +317,6 @@ class Epub extends Component{
 
   render() {
 
-    console.log("epub width", this.props.width, "epub height", this.props.height);
     return (
       <Rendition
         ref={(r) => {
@@ -351,8 +350,8 @@ class Epub extends Component{
         backgroundColor={this.props.backgroundColor}
         onError={this.props.onError}
         onDisplayed={this.props.onDisplayed}
-        width={this.props.width}
-        height={this.props.height}
+        width={this.state.width}
+        height={this.state.height}
         resizeOnOrientationChange={this.props.resizeOnOrientationChange}
       />
     );

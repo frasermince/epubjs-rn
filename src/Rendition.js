@@ -427,7 +427,6 @@ class Rendition extends Component {
     if (!this.props.url) {
       return loader;
     }
-    console.log("rendition width", this.props.width, "rendition height", this.props.height);
 
     return (
       <View ref="framer" style={[styles.container, {
