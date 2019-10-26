@@ -427,6 +427,7 @@ class Rendition extends Component {
     if (!this.props.url) {
       return loader;
     }
+    console.log("HTML", EMBEDDED_HTML, "source", this.props.url);
 
     return (
       <View ref="framer" style={[styles.container, {
