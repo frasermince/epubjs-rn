@@ -316,6 +316,8 @@ class Epub extends Component{
   }
 
   render() {
+
+    console.log("epub width", this.props.width, "epub height", this.props.height);
     return (
       <Rendition
         ref={(r) => {
