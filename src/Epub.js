@@ -350,8 +350,8 @@ class Epub extends Component{
         backgroundColor={this.props.backgroundColor}
         onError={this.props.onError}
         onDisplayed={this.props.onDisplayed}
-        width={this.state.width}
-        height={this.state.height}
+        width={this.props.width}
+        height={this.props.height}
         resizeOnOrientationChange={this.props.resizeOnOrientationChange}
       />
     );
