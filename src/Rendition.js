@@ -428,6 +428,7 @@ class Rendition extends Component {
       return loader;
     }
 
+    console.log("rendition dim", this.props.height, this.props.width);
     return (
       <View ref="framer" style={[styles.container, {
           maxWidth: this.props.width, maxHeight: this.props.height,
