@@ -430,10 +430,7 @@ class Rendition extends Component {
 
     console.log("rendition dim", this.props.height, this.props.width);
     return (
-      <View ref="framer" style={[styles.container, {
-          maxWidth: this.props.width, maxHeight: this.props.height,
-          minWidth: this.props.width, minHeight: this.props.height
-        }]}>
+      <View ref="framer" style={[styles.container]}>
         <WebView
           ref="webviewbridge"
           source={{html: EMBEDDED_HTML, baseUrl: this.props.url}}
