@@ -15,8 +15,8 @@ Pod::Spec.new do |s|
 
   s.dependency "react-native-static-server"
   s.dependency "react-native-webview"
-  s.dependency "react-native-zip-archive"
+  s.dependency "RNZipArchive"
   s.dependency "rn-fetch-blob"
-  s.dependency "@lightbase/react-native-orientation"
-  s.dependency "@react-native-community/async-storage"
+  s.dependency "react-native-orientation"
+  s.dependency "RNCAsyncStorage"
 end
