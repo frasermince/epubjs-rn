@@ -322,6 +322,7 @@ class Epub extends Component{
       <Rendition
         ref={(r) => {
           this.rendition = r;
+          this.props.onRendition(r);
 
           if (this.needsOpen) {
             this._openBook.apply(this, this.needsOpen);
