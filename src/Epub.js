@@ -246,6 +246,7 @@ class Epub extends Component{
     this.book.loaded.navigation.then((nav) => {
       if(!this.active || !this._isMounted) return;
       this.setState({toc : nav.toc});
+      this.props.onRendition(this.rendition)
       this.props.onNavigationReady && this.props.onNavigationReady(nav.toc);
     });
 
@@ -321,7 +322,7 @@ class Epub extends Component{
     return (
       <Rendition
         ref={(r) => {
-          this.rendition = this.props.onRendition(r);
+          this.rendition = r;
 
           if (this.needsOpen) {
             this._openBook.apply(this, this.needsOpen);
