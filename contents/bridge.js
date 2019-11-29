@@ -64,6 +64,12 @@ window.onerror = function (message, file, line, col, error) {
             head.appendChild(link);
           }
 
+          if (options && options.script) {
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.src = options.script
+            head.appendChild(script);
+          }
           break;
         }
         case "display": {

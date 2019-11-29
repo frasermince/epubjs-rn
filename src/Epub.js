@@ -253,7 +253,6 @@ class Epub extends Component{
       this.loadLocations().then((locations) => {
         this.rendition.setLocations(locations);
         // this.rendition.reportLocation();
-        this.props.onRendition(this.rendition)
         this.props.onLocationsReady && this.props.onLocationsReady(this.book.locations);
       });
     }
