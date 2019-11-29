@@ -18,7 +18,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 const URL = require("epubjs/libs/url/url-polyfill.js");
 
-const EMBEDDED_HTML = `
+const embeddedHtml = (script) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,6 +27,7 @@ const EMBEDDED_HTML = `
   <title>epubjs</title>
   <script>${process.env.POLYFILL}</script>
   <script>${process.env.EPUBJS}</script>
+  <script>${script}</script>
   <script>${process.env.BRIDGE}</script>
   <style>
     body {
@@ -436,7 +437,7 @@ class Rendition extends Component {
         }]}>
         <WebView
           ref="webviewbridge"
-          source={{html: EMBEDDED_HTML, baseUrl: this.props.url}}
+          source={{html: embeddedHtml(this.props.script), baseUrl: this.props.url}}
           style={[styles.manager, {
             backgroundColor: this.props.backgroundColor || "#FFFFFF"
           }]}
