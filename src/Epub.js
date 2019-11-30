@@ -334,6 +334,7 @@ class Epub extends Component{
         stylesheet={this.props.stylesheet}
         webviewStylesheet={this.props.webviewStylesheet}
         script={this.props.script}
+        bridge={this.props.bridge}
         onSelected={this.props.onSelected}
         onMarkClicked={this.props.onMarkClicked}
         onPress={(this.props.onPress)}
