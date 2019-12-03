@@ -27,7 +27,6 @@ const embeddedHtml = (script, bridge) => `
   <title>epubjs</title>
   <script>${process.env.POLYFILL}</script>
   <script>${process.env.EPUBJS}</script>
-  <script>${script}</script>
   <script>${bridge}</script>
   <style>
     body {
@@ -379,6 +378,10 @@ class Rendition extends Component {
       }
       default: {
         console.log("msg", decoded);
+        let e = this.props.customEvents[decoded.method];
+        if (e) {
+          e(decoded);
+        }
       }
     }
   }

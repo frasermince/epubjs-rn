@@ -330,6 +330,7 @@ class Epub extends Component{
         }}
         url={this.props.src}
         flow={this.props.flow}
+        customEvents={this.props.customEvents}
         minSpreadWidth={this.props.minSpreadWidth}
         stylesheet={this.props.stylesheet}
         webviewStylesheet={this.props.webviewStylesheet}
