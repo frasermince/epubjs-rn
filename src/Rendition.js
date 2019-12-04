@@ -144,6 +144,10 @@ class Rendition extends Component {
       config.height = this.props.height;
     }
 
+    if (this.props.location) {
+      config.location = this.props.location;
+    }
+
     if (this.props.disableOrientationEvent) {
       config.resizeOnOrientationChange = this.props.resizeOnOrientationChange;
     }
@@ -376,9 +380,16 @@ class Rendition extends Component {
         this._ready();
         break;
       }
+      case "set": {
+        let {key, value} = decoded
+        console.log("***LISTENER", this.props.stateChangeListeners[key]);
+        let [v, setter] = this.props.stateChangeListeners[key]
+        setter((r) => value);
+        break;
+      }
       default: {
         console.log("msg", decoded);
-        let e = this.props.customEvents[decoded.method];
+        let e = this.props.eventFns[decoded.method];
         if (e) {
           e(decoded);
         }
