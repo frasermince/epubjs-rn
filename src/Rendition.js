@@ -382,7 +382,7 @@ class Rendition extends Component {
       }
       case "set": {
         let hash = decoded
-        console.log("***LISTENER", this.props.stateChangeListeners[hash.key]);
+        console.log("***LISTENER", hash);
         let [v, setter] = this.props.stateChangeListeners[hash.key]
         if (hash.jsonValue) {
           setter((r) => JSON.parse(hash.jsonValue));
