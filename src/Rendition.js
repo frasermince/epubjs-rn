@@ -395,7 +395,11 @@ class Rendition extends Component {
         console.log("msg", decoded);
         let e = this.props.eventFns[decoded.method];
         if (e) {
-          e(decoded);
+          if (decoded.jsonValue) {
+            e(JSON.parse(decoded.jsonValue));
+          } else if (hash.value) {
+            e(decoded.value);
+          }
         }
       }
     }
