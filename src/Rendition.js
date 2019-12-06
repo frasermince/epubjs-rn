@@ -381,10 +381,14 @@ class Rendition extends Component {
         break;
       }
       case "set": {
-        let {key, value} = decoded
-        console.log("***LISTENER", this.props.stateChangeListeners[key]);
-        let [v, setter] = this.props.stateChangeListeners[key]
-        setter((r) => value);
+        let hash = decoded
+        console.log("***LISTENER", this.props.stateChangeListeners[hash.key]);
+        let [v, setter] = this.props.stateChangeListeners[hash.key]
+        if (hash.jsonValue) {
+          setter((r) => JSON.parse(hash.jsonValue));
+        } else if (hash.value) {
+          setter((r) => hash.value);
+        }
         break;
       }
       default: {
