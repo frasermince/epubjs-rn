@@ -86,7 +86,7 @@ class EpubStreamer {
         fileCache : true,
         path: Dirs.DocumentDir + '/' + filename
       })
-      .fetch("GET", bookUrl)
+      .fetch("GET", bookUrl, { 'Transfer-Encoding' : 'Chunked' })
       .then((res) => {
         const sourcePath = res.path();
         const targetPath = `${Dirs.DocumentDir}/${this.root}/${filename}`;
