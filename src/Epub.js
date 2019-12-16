@@ -5,8 +5,7 @@ import {
   View,
   ActivityIndicator,
   Dimensions,
-  AppState,
-  WebView
+  AppState
 } from "react-native";
 
 import Orientation from "@lightbase/react-native-orientation";
