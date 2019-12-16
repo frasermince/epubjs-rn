@@ -12,6 +12,7 @@ import { zip, unzip, unzipAssets, subscribe } from 'react-native-zip-archive'
 import { join } from "path";
 
 const Dirs = RNFetchBlob.fs.dirs
+const ls = RNFetchBlob.fs.ls
 
 if (!global.Blob) {
   global.Blob = RNFetchBlob.polyfill.Blob;
@@ -88,6 +89,9 @@ class EpubStreamer {
       })
       .fetch("GET", bookUrl)
       .then((res) => {
+        ls(res.path()).then(function (files) {
+          console.log("ls", files);
+        })
         const sourcePath = res.path();
         const targetPath = `${Dirs.DocumentDir}/${this.root}/${filename}`;
         const url = `${this.serverOrigin}/${filename}/`;
