@@ -473,6 +473,7 @@ class Rendition extends Component {
           onScroll={console.log("SCROLLED")}
           automaticallyAdjustContentInsets={false}
           originWhitelist={['*']}
+          decelerationRate={0.0}
           allowsLinkPreview={false}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
