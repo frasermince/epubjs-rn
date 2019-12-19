@@ -470,7 +470,7 @@ class Rendition extends Component {
           onMessage={this._onBridgeMessage.bind(this)}
           contentInsetAdjustmentBehavior="never"
           contentInset={{top: 0}}
-          onScroll={(e) => console.log("SCROLLED", e)}
+          onScroll={(e) => console.log("SCROLLED")}
           automaticallyAdjustContentInsets={false}
           originWhitelist={['*']}
           decelerationRate={"fast"}
