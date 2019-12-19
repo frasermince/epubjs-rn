@@ -4,6 +4,8 @@ import {
 
 import StaticServer from 'react-native-static-server';
 
+import promiseRetry from 'promise-retry';
+
 import RNFetchBlob from "rn-fetch-blob";
 
 import { zip, unzip, unzipAssets, subscribe } from 'react-native-zip-archive'
@@ -39,16 +41,19 @@ class EpubStreamer {
 
   setup() {
     // Add the directory
-    return RNFetchBlob.fs.exists(`${Dirs.DocumentDir}/${this.root}`)
+    var self = this;
+    return promiseRetry(function(retry, number) {
+      return RNFetchBlob.fs.exists(`${Dirs.DocumentDir}/${self.root}`)
       .then((exists) => {
         if (!exists) {
-          return RNFetchBlob.fs.mkdir(`${Dirs.DocumentDir}/${this.root}`);
+          return RNFetchBlob.fs.mkdir(`${Dirs.DocumentDir}/${self.root}`);
         }
       })
       .then(() => {
-        return new StaticServer(this.port, this.root, {localOnly: true});
+        return new StaticServer(self.port, self.root, {localOnly: true});
       })
-      .catch((e) => { console.error(e) });
+      .catch(retry);
+    });
   }
 
   start() {
