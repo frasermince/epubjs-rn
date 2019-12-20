@@ -459,7 +459,7 @@ class Rendition extends Component {
         }]}>
         <WebView
           ref="webviewbridge"
-          source={{html: embeddedHtml(this.props.script, this.props.bridge), baseUrl: this.props.url}}
+          source={{html: this.props.customHtml || embeddedHtml(this.props.script, this.props.bridge), baseUrl: this.props.url}}
           style={[styles.manager, {
             backgroundColor: this.props.backgroundColor || "#FFFFFF"
           }]}

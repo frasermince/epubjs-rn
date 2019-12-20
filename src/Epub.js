@@ -328,6 +328,7 @@ class Epub extends Component{
           }
         }}
         url={this.props.src}
+        customHtml={this.props.customHtml}
         flow={this.props.flow}
         stateChangeListeners={this.props.stateChangeListeners}
         eventFns={this.props.eventFns}
