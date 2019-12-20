@@ -30,7 +30,7 @@ const embeddedHtml = (script, bridge) => `
   <script>${bridge}</script>
   <style>
     body {
-      overflow-x: hidden;
+      position: fixed;
       margin: 0;
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       -webkit-tap-highlight-color: transparent; /* For some Androids */
