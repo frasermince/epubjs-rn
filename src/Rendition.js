@@ -30,7 +30,6 @@ const embeddedHtml = (script, bridge) => `
   <script>${bridge}</script>
   <style>
     body {
-      overflow-x: hidden;
       margin: 0;
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       -webkit-tap-highlight-color: transparent; /* For some Androids */
@@ -466,7 +465,7 @@ class Rendition extends Component {
           }]}
           bounces={false}
           javaScriptEnabled={true}
-          scrollEnabled={true}
+          scrollEnabled={false}
           pagingEnabled={this.props.flow === "paginated"}
           onMessage={this._onBridgeMessage.bind(this)}
           contentInsetAdjustmentBehavior="never"
