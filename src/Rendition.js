@@ -7,7 +7,8 @@ import {
   Dimensions,
   Platform,
   AppState,
-  TouchableOpacity
+  TouchableOpacity,
+  PanResponder
 } from "react-native";
 
 import { WebView } from 'react-native-webview';
@@ -53,6 +54,18 @@ class Rendition extends Component {
   constructor(props) {
     super(props);
 
+    this.gesture = PanResponder.create({
+      onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onPanResponderMove: (evt, gestureState) => {
+        console.log('onPanResponderMove: ', evt, ', ', gestureState);
+      },
+     onPanResponderTerminate: (evt, gestureState) => {
+        console.log('onPanResponderTerminate: ', evt, ', ', gestureState);
+      },
+      onPanResponderRelease: (evt, gestureState) => {
+        console.log('onPanResponderRelease: ', evt, ', ', gestureState);
+      },
+    });
     this.state = {
       loaded: false,
     }
@@ -465,7 +478,7 @@ class Rendition extends Component {
           }]}
           bounces={false}
           javaScriptEnabled={true}
-          scrollEnabled={true}
+          scrollEnabled={false}
           pagingEnabled={this.props.flow === "paginated"}
           onMessage={this._onBridgeMessage.bind(this)}
           contentInsetAdjustmentBehavior="never"
@@ -477,6 +490,7 @@ class Rendition extends Component {
           allowsLinkPreview={false}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
+          {...this.gesture.panHandlers}
         />
         {!this.state.loaded ? loader : null}
       </View>
