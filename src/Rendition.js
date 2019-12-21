@@ -57,7 +57,7 @@ class Rendition extends Component {
     this.gesture = PanResponder.create({
       onStartShouldSetPanResponder: (evt, gestureState) => true,
       onPanResponderMove: (evt, gestureState) => {
-        console.log('onPanResponderMove: ', evt, ', ', gestureState);
+        console.log('onPanResponderMove: ', evt, ', ', gestureState, this.refs.webviewbridge);
       },
      onPanResponderTerminate: (evt, gestureState) => {
         console.log('onPanResponderTerminate: ', evt, ', ', gestureState);
@@ -483,14 +483,13 @@ class Rendition extends Component {
           onMessage={this._onBridgeMessage.bind(this)}
           contentInsetAdjustmentBehavior="never"
           contentInset={{top: 0}}
-          onScroll={(e) => console.log("SCROLLED")}
           automaticallyAdjustContentInsets={false}
           originWhitelist={['*']}
           decelerationRate={"fast"}
           allowsLinkPreview={false}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
-          {...this.gesture.panHandlers}
+          //{...this.gesture.panHandlers}
         />
         {!this.state.loaded ? loader : null}
       </View>
