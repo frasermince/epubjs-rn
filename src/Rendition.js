@@ -482,7 +482,6 @@ class Rendition extends Component {
           pagingEnabled={this.props.flow === "paginated"}
           onMessage={this._onBridgeMessage.bind(this)}
           contentInsetAdjustmentBehavior="never"
-          contentInset={{top: 0}}
           automaticallyAdjustContentInsets={false}
           originWhitelist={['*']}
           decelerationRate={"fast"}
