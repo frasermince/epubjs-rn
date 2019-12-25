@@ -487,7 +487,7 @@ class Rendition extends Component {
           originWhitelist={['*']}
           decelerationRate={"fast"}
           allowsLinkPreview={false}
-          allowsBackForwardNavigationGestures={true}
+          allowsBackForwardNavigationGestures={false}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
           //{...this.gesture.panHandlers}
