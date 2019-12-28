@@ -29,7 +29,7 @@
     "react": "16.8.3",
     "react-native": "0.61.2",
     "react-native-static-server": "^0.4.2",
-    "react-native-webview": "^6.11.1",
+    "react-native-webview": "^8.0.2",
     "react-native-zip-archive": "^4.1.1",
     "rn-fetch-blob": "^0.10.15",
     "stream": "0.0.2",
