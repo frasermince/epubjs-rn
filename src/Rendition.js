@@ -8,10 +8,11 @@ import {
   Platform,
   AppState,
   TouchableOpacity,
-  PanResponder
+  PanResponder,
+  WebView
 } from "react-native";
 
-import { WebView } from 'react-native-webview';
+//import { WebView } from 'react-native-webview';
 
 import EventEmitter from 'event-emitter'
 
