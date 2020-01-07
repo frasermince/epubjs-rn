@@ -43,6 +43,9 @@ const embeddedHtml = (script, bridge) => `
       and (-webkit-device-pixel-ratio : 3) {
       body {
         padding-top: calc(env(safe-area-inset-top) / 2);
+        padding-right: calc(env(safe-area-inset-right) / 2);
+        padding-left: calc(env(safe-area-inset-left) / 2);
+        padding-bottom: calc(env(safe-area-inset-bottom) / 2);
       }
     }
   </style>
