@@ -470,7 +470,7 @@ class Rendition extends Component {
           }]}
           bounces={false}
           javaScriptEnabled={true}
-          scrollEnabled={false}
+          scrollEnabled={true}
           pagingEnabled={this.props.flow === "paginated"}
           onMessage={this._onBridgeMessage.bind(this)}
           contentInsetAdjustmentBehavior="never"
