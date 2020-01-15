@@ -409,7 +409,7 @@ class Rendition extends Component {
         let [v, setter] = this.props.stateChangeListeners[hash.key]
         if (hash.jsonValue) {
           setter((r) => JSON.parse(hash.jsonValue));
-        } else if (hash.value) {
+        } else {
           setter((r) => hash.value);
         }
         break;
