@@ -30,6 +30,17 @@ const embeddedHtml = (script, bridge) => `
   <script>${process.env.EPUBJS}</script>
   <script>${bridge}</script>
   <style>
+    #select-box {
+      visibility: hidden;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      height: 100%;
+    }
+    span {
+      display: inline-block;
+    }
     body {
       margin: 0;
       -webkit-touch-callout: none; /* iOS Safari */
@@ -42,6 +53,16 @@ const embeddedHtml = (script, bridge) => `
       -webkit-tap-highlight-color: rgba(0,0,0,0);
       -webkit-tap-highlight-color: transparent; /* For some Androids */
     }
+    [ref="epubjs-mk"] {
+      display: block;
+      position : absolute;
+      background-color: tomato;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+  }
+}
+
 
     /* For iPhone X Notch */
     @media only screen
@@ -56,7 +77,12 @@ const embeddedHtml = (script, bridge) => `
       }
     }
   </style>
-</head><body></body></html>
+</head><body>
+<svg id="select-box" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="100%" height="100%" stroke="black"
+      stroke-width="2" fill="transparent" />
+ </svg>
+</body></html>
 `;
 
 class Rendition extends Component {

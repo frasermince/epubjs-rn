@@ -1,0 +1,12 @@
+diff --git a/node_modules/epubjs/dist/epub.js b/node_modules/epubjs/dist/epub.js
+index ad4d6d6..5fcca21 100644
+--- a/node_modules/epubjs/dist/epub.js
++++ b/node_modules/epubjs/dist/epub.js
+@@ -10303,6 +10303,7 @@ var IframeView = function () {
+ 			var top = void 0,
+ 			    right = void 0,
+ 			    left = void 0;
++      debugger
+ 
+ 			if (this.layout.name === "pre-paginated" || this.settings.axis !== "horizontal") {
+ 				var pos = range.getBoundingClientRect();
