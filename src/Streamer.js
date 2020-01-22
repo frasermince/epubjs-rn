@@ -43,6 +43,7 @@ class EpubStreamer {
     // Add the directory
     var self = this;
     return promiseRetry(function(retry, number) {
+      console.log(`***DIRECTORY ${Dirs.DocumentDir}/${self.root}`);
       return RNFetchBlob.fs.exists(`${Dirs.DocumentDir}/${self.root}`)
       .then((exists) => {
         if (!exists) {
@@ -97,6 +98,8 @@ class EpubStreamer {
         const sourcePath = res.path();
         const targetPath = `${Dirs.DocumentDir}/${this.root}/${filename}`;
         const url = `${this.serverOrigin}/${filename}/`;
+        console.log("***SOURCE PATH", sourcePath);
+        console.log("***TARGET PATH", targetPath);
         return unzip(sourcePath, targetPath)
           .then((path) => {
 
