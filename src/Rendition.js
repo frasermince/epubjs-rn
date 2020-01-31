@@ -431,7 +431,6 @@ class Rendition extends Component {
       }
       case "set": {
         let hash = decoded
-        console.log("***LISTENER", hash);
         let [v, setter] = this.props.stateChangeListeners[hash.key]
         if (hash.jsonValue) {
           setter((r) => JSON.parse(hash.jsonValue));
@@ -489,7 +488,6 @@ class Rendition extends Component {
       return loader;
     }
 
-    console.log("rendition dim", this.props.height, this.props.width);
     return (
       <View ref="framer" style={[styles.container, {
           maxWidth: this.props.width, maxHeight: this.props.height,
@@ -508,7 +506,6 @@ class Rendition extends Component {
           onMessage={this._onBridgeMessage.bind(this)}
           contentInsetAdjustmentBehavior="never"
           automaticallyAdjustContentInsets={false}
-          onScroll={(e) => {console.log("***ON SCROLL", e);}}
           originWhitelist={['*']}
           decelerationRate={"fast"}
           allowsLinkPreview={false}
