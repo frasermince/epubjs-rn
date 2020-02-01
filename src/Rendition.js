@@ -26,6 +26,7 @@ const embeddedHtml = (script, bridge) => `
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover">
   <title>epubjs</title>
+  <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
   <script>${process.env.POLYFILL}</script>
   <script>${process.env.EPUBJS}</script>
   <script>${bridge}</script>
