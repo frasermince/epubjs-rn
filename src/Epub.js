@@ -347,6 +347,7 @@ class Epub extends Component{
         fontSize={this.props.fontSize}
         font={this.props.font}
         display={this.props.location}
+        epubjs={this.props.epubjs}
         onRelocated={this.onRelocated.bind(this)}
         orientation={this.state.orientation}
         backgroundColor={this.props.backgroundColor}

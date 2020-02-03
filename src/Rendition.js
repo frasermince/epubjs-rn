@@ -19,7 +19,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 const URL = require("epubjs/libs/url/url-polyfill.js");
 
-const embeddedHtml = (script, bridge) => `
+const embeddedHtml = (script, bridge, epubjs) => `
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +28,7 @@ const embeddedHtml = (script, bridge) => `
   <title>epubjs</title>
   <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
   <script>${process.env.POLYFILL}</script>
-  <script>${process.env.EPUBJS}</script>
+  <script>${epubjs}</script>
   <script>${bridge}</script>
   <style>
     #select-box {
@@ -91,18 +91,6 @@ class Rendition extends Component {
   constructor(props) {
     super(props);
 
-    this.gesture = PanResponder.create({
-      onStartShouldSetPanResponder: (evt, gestureState) => true,
-      onPanResponderMove: (evt, gestureState) => {
-        console.log('onPanResponderMove: ', evt, ', ', gestureState, this.refs.webviewbridge);
-      },
-     onPanResponderTerminate: (evt, gestureState) => {
-        console.log('onPanResponderTerminate: ', evt, ', ', gestureState);
-      },
-      onPanResponderRelease: (evt, gestureState) => {
-        console.log('onPanResponderRelease: ', evt, ', ', gestureState);
-      },
-    });
     this.state = {
       loaded: false,
     }
@@ -110,14 +98,17 @@ class Rendition extends Component {
   }
 
   componentDidMount() {
+    debugger
     this._isMounted = true;
 
+    console.log("***MOUNT");
     if (this.props.url) {
       this.load(this.props.url);
     }
   }
 
   componentWillUnmount() {
+    console.log("***UNMOUNT");
     this._isMounted = false;
     this.destroy();
   }
@@ -127,6 +118,7 @@ class Rendition extends Component {
       this.load(this.props.url);
     }
 
+    console.log("***DISPLAY COMPARE", prevProps.display, "!==", this.props.display);
     if (prevProps.display !== this.props.display) {
       // this.setState({ loaded: false });
       this.display(this.props.display);
@@ -376,6 +368,7 @@ class Rendition extends Component {
         break;
       }
       case "rendered": {
+        console.log("***RENDERED");
         if (!this.state.loaded) {
           this.setState({loaded: true});
         }
@@ -496,7 +489,7 @@ class Rendition extends Component {
         }]}>
         <WebView
           ref="webviewbridge"
-          source={{html: this.props.customHtml || embeddedHtml(this.props.script, this.props.bridge), baseUrl: this.props.url}}
+          source={{html: this.props.customHtml || embeddedHtml(this.props.script, this.props.bridge, this.props.epubjs), baseUrl: this.props.url}}
           style={[styles.manager, {
             backgroundColor: this.props.backgroundColor || "#FFFFFF"
           }]}
@@ -513,7 +506,6 @@ class Rendition extends Component {
           allowsBackForwardNavigationGestures={false}
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
-          //{...this.gesture.panHandlers}
         />
         {!this.state.loaded ? loader : null}
       </View>
