@@ -11,6 +11,8 @@ import {
   PanResponder
 } from "react-native";
 
+import TouchableDebounce from './TouchableDebounce';
+
 import { WebView } from 'react-native-webview';
 
 import EventEmitter from 'event-emitter'
@@ -98,7 +100,6 @@ class Rendition extends Component {
   }
 
   componentDidMount() {
-    debugger
     this._isMounted = true;
 
     console.log("***MOUNT");
@@ -465,7 +466,7 @@ class Rendition extends Component {
 
   render() {
     let loader = (
-      <TouchableOpacity onPress={() => this.props.onPress('')} style={styles.loadScreen}>
+      <TouchableDebounce onPress={() => this.props.onPress('')} style={styles.loadScreen}>
         <View style={[styles.loadScreen, {
             backgroundColor: this.props.backgroundColor || "#FFFFFF"
           }]}>
@@ -475,7 +476,7 @@ class Rendition extends Component {
                 style={{ flex: 1 }}
               />
         </View>
-      </TouchableOpacity>
+      </TouchableDebounce>
     );
 
     if (!this.props.url) {
