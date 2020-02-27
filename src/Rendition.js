@@ -102,14 +102,12 @@ class Rendition extends Component {
   componentDidMount() {
     this._isMounted = true;
 
-    console.log("***MOUNT");
     if (this.props.url) {
       this.load(this.props.url);
     }
   }
 
   componentWillUnmount() {
-    console.log("***UNMOUNT");
     this._isMounted = false;
     this.destroy();
   }
@@ -119,7 +117,10 @@ class Rendition extends Component {
       this.load(this.props.url);
     }
 
-    console.log("***DISPLAY COMPARE", prevProps.display, "!==", this.props.display);
+    if (prevProps.url !== this.props.url) {
+      this.setState({ loaded: false });
+    }
+
     if (prevProps.display !== this.props.display) {
       // this.setState({ loaded: false });
       this.display(this.props.display);
@@ -369,7 +370,6 @@ class Rendition extends Component {
         break;
       }
       case "rendered": {
-        console.log("***RENDERED");
         if (!this.state.loaded) {
           this.setState({loaded: true});
         }
@@ -385,7 +385,6 @@ class Rendition extends Component {
       }
       case "resized": {
         let {size} = decoded;
-        console.log("resized", size.width, size.height);
         break;
       }
       case "press": {
