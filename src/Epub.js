@@ -41,6 +41,7 @@ class Epub extends Component{
     super(props);
 
     var bounds = Dimensions.get("window");
+    this.rendition = React.createRef();
 
     this.state = {
       toc: [],
@@ -49,10 +50,15 @@ class Epub extends Component{
       height : bounds.height,
       orientation: "PORTRAIT"
     }
-
+    this.clearSelected = this.clearSelected.bind(this);
   }
 
   componentDidMount() {
+
+    if (this.needsOpen) {
+      this._openBook.apply(this, this.needsOpen);
+      this.needsOpen = undefined;
+    }
     this.active = true;
     this._isMounted = true;
     AppState.addEventListener('change', this._handleAppStateChange.bind(this));
@@ -250,7 +256,7 @@ class Epub extends Component{
 
     if (this.props.generateLocations != false) {
       this.loadLocations().then((locations) => {
-        this.rendition.setLocations(locations);
+        this.rendition.current.setLocations(locations);
         // this.rendition.reportLocation();
         this.props.onLocationsReady && this.props.onLocationsReady(this.book.locations);
       });
@@ -276,6 +282,12 @@ class Epub extends Component{
       })
 
     });
+  }
+
+  clearSelected() {
+    if (this.rendition.current) {
+      this.rendition.current.clearSelected();
+    }
   }
 
   onRelocated(visibleLocation) {
@@ -317,14 +329,7 @@ class Epub extends Component{
   render() {
     return (
       <Rendition
-        ref={(r) => {
-          this.rendition = r;
-
-          if (this.needsOpen) {
-            this._openBook.apply(this, this.needsOpen);
-            this.needsOpen = undefined;
-          }
-        }}
+        ref={this.rendition}
         url={this.props.src}
         customHtml={this.props.customHtml}
         flow={this.props.flow}

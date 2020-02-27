@@ -156,6 +156,10 @@ class Rendition extends Component {
     }
   }
 
+  clearSelected() {
+    this.sendToBridge("deselect");
+  }
+
   load(bookUrl) {
     if (!this._webviewLoaded) return;
 
@@ -331,7 +335,7 @@ class Rendition extends Component {
     if (!this.refs.webviewbridge) {
       return;
     }
-
+    console.log("***TO BRIDGE", str);
     this.refs.webviewbridge.postMessage(str);
   }
 
