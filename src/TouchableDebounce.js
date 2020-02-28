@@ -32,6 +32,6 @@ TouchableDebounce.propTypes = {
 TouchableDebounce.defaultProps = {
   style: {},
   handleFirstTap: true,
-  debounceTime: 750
+  debounceTime: 50
 };
 export default TouchableDebounce;
