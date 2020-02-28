@@ -134,11 +134,11 @@ class Rendition extends Component {
       this.flow(this.props.flow || "paginated");
     }
 
-    if (prevProps.themes !== this.props.themes) {
+    if (prevProps.themes.length !== this.props.themes.length) {
       this.themes(this.props.themes);
     }
 
-    if (prevProps.themes !== this.props.theme) {
+    if (prevProps.theme !== this.props.theme) {
       this.theme(this.props.theme);
     }
 
