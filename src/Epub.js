@@ -240,10 +240,12 @@ class Epub extends Component{
 
     this.book.open(bookUrl)
       .catch((err) => {
+        console.log("ERROR", err);
         console.error(err);
       })
 
     this.book.ready.then(() => {
+      console.log("READY");
       this.isReady = true;
       this.props.onReady && this.props.onReady(this.book);
     });
@@ -331,6 +333,8 @@ class Epub extends Component{
       <Rendition
         ref={this.rendition}
         url={this.props.src}
+        loaded={this.props.loaded}
+        setLoaded={this.props.setLoaded}
         customHtml={this.props.customHtml}
         flow={this.props.flow}
         stateChangeListeners={this.props.stateChangeListeners}

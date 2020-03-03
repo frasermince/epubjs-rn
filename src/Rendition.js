@@ -92,11 +92,6 @@ class Rendition extends Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      loaded: false,
-    }
-
   }
 
   componentDidMount() {
@@ -118,7 +113,7 @@ class Rendition extends Component {
     }
 
     if (prevProps.url !== this.props.url) {
-      this.setState({ loaded: false });
+      this.props.setLoaded(false);
     }
 
     if (prevProps.display !== this.props.display) {
@@ -374,16 +369,16 @@ class Rendition extends Component {
         break;
       }
       case "rendered": {
-        if (!this.state.loaded) {
-          this.setState({loaded: true});
+        if (!this.props.loaded) {
+          this.props.setLoaded(true);
         }
         break;
       }
       case "relocated": {
         let {location} = decoded;
         this._relocated(location);
-        if (!this.state.loaded) {
-          this.setState({loaded: true});
+        if (!this.props.loaded) {
+          this.props.setLoaded(true);
         }
         break;
       }
@@ -511,7 +506,7 @@ class Rendition extends Component {
           showsHorizontalScrollIndicator={false}
           showsVerticalScrollIndicator={false}
         />
-        {!this.state.loaded ? loader : null}
+        {!this.props.loaded ? loader : null}
       </View>
     );
   }
