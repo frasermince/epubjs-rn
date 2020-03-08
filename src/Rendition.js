@@ -113,7 +113,7 @@ class Rendition extends Component {
     }
 
     if (prevProps.url !== this.props.url) {
-      console.log("EPUB URL", url);
+      console.log("EPUB URL", prevProps.url, this.props.url);
       this.props.setLoaded(false);
     }
 
