@@ -463,6 +463,24 @@ class Rendition extends Component {
   }
 
   render() {
+    let loader = (
+      <TouchableDebounce onPress={() => this.props.onPress('')} style={styles.loadScreen}>
+        <View style={[styles.loadScreen, {
+            backgroundColor: this.props.backgroundColor || "#FFFFFF"
+          }]}>
+            <ActivityIndicator
+                color={this.props.color || "black"}
+                size={this.props.size || "large"}
+                style={{ flex: 1 }}
+              />
+        </View>
+      </TouchableDebounce>
+    );
+
+    if (!this.props.url) {
+      return loader;
+    }
+
     return (
       <View ref="framer" style={[styles.container, {
           maxWidth: this.props.width, maxHeight: this.props.height,
