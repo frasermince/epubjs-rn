@@ -113,6 +113,7 @@ class Rendition extends Component {
     }
 
     if (prevProps.url !== this.props.url) {
+      console.log("EPUB URL", url);
       this.props.setLoaded(false);
     }
 
@@ -370,6 +371,7 @@ class Rendition extends Component {
       }
       case "rendered": {
         if (!this.props.loaded) {
+          console.log("RENDERED");
           this.props.setLoaded(true);
         }
         break;
@@ -378,6 +380,7 @@ class Rendition extends Component {
         let {location} = decoded;
         this._relocated(location);
         if (!this.props.loaded) {
+          console.log("RELOCATED");
           this.props.setLoaded(true);
         }
         break;
