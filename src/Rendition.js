@@ -119,35 +119,43 @@ class Rendition extends Component {
 
     if (prevProps.display !== this.props.display) {
       // this.setState({ loaded: false });
+      console.log("EPUB DISPLAY CHANGE");
       this.display(this.props.display);
     }
 
     if (prevProps.orientation !== this.props.orientation) {
+      console.log("EPUB ORIENTATION CHANGE");
       // this.setState({ loaded: false });
     }
 
     if (prevProps.flow !== this.props.flow) {
+      console.log("EPUB FLOW CHANGE");
       this.flow(this.props.flow || "paginated");
     }
 
     if (prevProps.themes.length !== this.props.themes.length) {
+      console.log("EPUB THEMES CHANGE");
       this.themes(this.props.themes);
     }
 
     if (prevProps.theme !== this.props.theme) {
+      console.log("EPUB THEME CHANGE");
       this.theme(this.props.theme);
     }
 
     if (prevProps.fontSize !== this.props.fontSize) {
+      console.log("EPUB FONT SIZE CHANGE");
       this.fontSize(this.props.fontSize);
     }
 
     if (prevProps.font !== this.props.font) {
+      console.log("EPUB FONT CHANGE");
       this.font(this.props.font);
     }
 
     if (prevProps.width !== this.props.width ||
         prevProps.height !== this.props.height) {
+      console.log("EPUB DIMENSION CHANGE");
       this.resize(this.props.width, this.props.height);
     }
   }
