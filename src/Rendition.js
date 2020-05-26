@@ -133,13 +133,14 @@ class Rendition extends Component {
       this.flow(this.props.flow || "paginated");
     }
 
-    debugger
-    if (JSON.stringify(prevProps.themes) !== JSON.stringify(this.props.themes)) {
+    let previousThemes = JSON.stringify(prevProps.themes);
+    let currentThemes = JSON.stringify(this.props.themes)
+    if ( previousThemes !== currentThemes) {
       console.log("EPUB THEMES CHANGE");
       this.themes(this.props.themes);
     }
 
-    if (prevProps.theme !== this.props.theme || JSON.stringify(prevProps.themes) !== JSON.stringify(this.props.themes)) {
+    if (prevProps.theme !== this.props.theme || previousThemes !== currentThemes) {
       console.log("EPUB THEME CHANGE");
       this.theme(this.props.theme);
     }
