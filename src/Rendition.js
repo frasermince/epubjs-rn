@@ -387,8 +387,8 @@ class Rendition extends Component {
         break;
       }
       case "relocated": {
-        let {location} = decoded;
-        this._relocated(location);
+        let {location, pageBegin, pageEnd, smilChapter} = decoded;
+        this._relocated(location, pageBegin, pageEnd, smilChapter);
         if (!this.props.loaded) {
           console.log("RELOCATED");
           this.props.setLoaded(true);
@@ -448,10 +448,10 @@ class Rendition extends Component {
     }
   }
 
-  _relocated(visibleLocation) {
+  _relocated(visibleLocation, pageBegin, pageEnd, smilChapter) {
     this._visibleLocation = visibleLocation;
     if (this.props.onRelocated) {
-      this.props.onRelocated(visibleLocation, this);
+      this.props.onRelocated(visibleLocation, pageBegin, pageEnd, smilChapter, this);
     }
   }
 

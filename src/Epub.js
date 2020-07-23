@@ -292,11 +292,11 @@ class Epub extends Component{
     }
   }
 
-  onRelocated(visibleLocation) {
+  onRelocated(visibleLocation, pageBegin, pageEnd, smilChapter) {
     this._visibleLocation = visibleLocation;
 
     if (this.props.onLocationChange) {
-      this.props.onLocationChange(visibleLocation);
+      this.props.onLocationChange(visibleLocation, pageBegin, pageEnd, smilChapter);
     }
   }
 
