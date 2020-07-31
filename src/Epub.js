@@ -365,6 +365,7 @@ class Epub extends Component{
         width={this.props.width}
         height={this.props.height}
         resizeOnOrientationChange={this.props.resizeOnOrientationChange}
+        audioTime={this.props.audioTime}
       />
     );
   }

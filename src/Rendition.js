@@ -117,6 +117,10 @@ class Rendition extends Component {
       this.props.setLoaded(false);
     }
 
+    if (prevProps.audioTime !== this.props.audioTime) {
+      setAudioTime(props.audioTime);
+    }
+
     if (prevProps.display !== this.props.display) {
       // this.setState({ loaded: false });
       console.log("EPUB DISPLAY CHANGE");
@@ -164,6 +168,10 @@ class Rendition extends Component {
 
   clearSelected() {
     this.sendToBridge("deselect");
+  }
+
+  setAudioTime(time) {
+    sendToBridge("currentAudioTime", [time]);
   }
 
   load(bookUrl) {
