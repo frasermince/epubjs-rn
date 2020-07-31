@@ -118,7 +118,7 @@ class Rendition extends Component {
     }
 
     if (prevProps.audioTime !== this.props.audioTime) {
-      setAudioTime(props.audioTime);
+      this.setAudioTime(props.audioTime);
     }
 
     if (prevProps.display !== this.props.display) {
@@ -171,7 +171,7 @@ class Rendition extends Component {
   }
 
   setAudioTime(time) {
-    sendToBridge("currentAudioTime", [time]);
+    this.sendToBridge("currentAudioTime", [time]);
   }
 
   load(bookUrl) {
