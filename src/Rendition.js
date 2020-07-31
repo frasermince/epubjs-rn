@@ -118,7 +118,7 @@ class Rendition extends Component {
     }
 
     if (prevProps.audioTime !== this.props.audioTime) {
-      this.setAudioTime(props.audioTime);
+      this.setAudioTime(this.props.audioTime);
     }
 
     if (prevProps.display !== this.props.display) {
