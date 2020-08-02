@@ -167,7 +167,7 @@ class Rendition extends Component {
   }
 
   setAudioTime(time) {
-    this.sendToBridge("currentAudioTime");
+    this.sendToBridge("currentAudioTime", [{ "audioTime": time}]);
   }
 
   load(bookUrl) {
