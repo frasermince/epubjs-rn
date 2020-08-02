@@ -269,6 +269,7 @@ class Epub extends Component{
 
   setAudioTime(time) {
     if (this.rendition.current && time) {
+      debugger
       this.rendition.current.setAudioTime(time);
     }
   }
