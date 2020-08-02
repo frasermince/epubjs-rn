@@ -51,6 +51,7 @@ class Epub extends Component{
       orientation: "PORTRAIT"
     }
     this.clearSelected = this.clearSelected.bind(this);
+    this.setAudioTime = this.setAudioTime.bind(this);
   }
 
   componentDidMount() {
