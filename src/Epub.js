@@ -267,7 +267,9 @@ class Epub extends Component{
   }
 
   setAudioTime(time) {
-    this.rendition.current.setAudioTime(time);
+    if (this.rendition.current) {
+      this.rendition.current.setAudioTime(time);
+    }
   }
 
   loadLocations() {
