@@ -536,6 +536,7 @@ const styles = StyleSheet.create({
   },
   manager: {
     flex: 1,
+    margin: 10
   },
   scrollContainer: {
     flex: 1,
