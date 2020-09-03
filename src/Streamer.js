@@ -86,7 +86,7 @@ class EpubStreamer {
 
   add(bookUrl) {
     let uri = new Uri(bookUrl);
-    const filename = this.filename(bookUrl);
+    const filename = encodeURIComponent(this.filename(bookUrl));
 
     return RNFetchBlob
       .config({
@@ -96,8 +96,8 @@ class EpubStreamer {
       .fetch("GET", bookUrl)
       .then((res) => {
         const sourcePath = res.path();
-        const targetPath = `${Dirs.DocumentDir}/${this.root}/${encodeURIComponent(filename)}`;
-        const url = `${this.serverOrigin}/${encodeURIComponent(filename)}/`;
+        const targetPath = `${Dirs.DocumentDir}/${this.root}/${filename}`;
+        const url = `${this.serverOrigin}/${filename}/`;
         console.log("***SOURCE PATH", sourcePath);
         console.log("***TARGET PATH", targetPath);
         return unzip(sourcePath, targetPath)
