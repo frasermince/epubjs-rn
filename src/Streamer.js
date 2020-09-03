@@ -97,7 +97,7 @@ class EpubStreamer {
       .then((res) => {
         const sourcePath = res.path();
         const targetPath = `${Dirs.DocumentDir}/${this.root}/${encodeURIComponent(filename)}`;
-        const url = `${this.serverOrigin}/${encodeURIComponent(filename)}/`;
+        const url = `${this.serverOrigin}/${filename}/`;
         console.log("***SOURCE PATH", sourcePath);
         console.log("***TARGET PATH", targetPath);
         return unzip(sourcePath, targetPath)
