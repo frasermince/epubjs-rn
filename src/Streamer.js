@@ -126,7 +126,7 @@ class EpubStreamer {
       .then((exists) => {
         if (exists) {
           const filename = this.filename(bookUrl);
-          const url = `${this.serverOrigin}/${filename}/`;
+          const url = `${this.serverOrigin}/${encodeURIComponent(filename)}/`;
           return url;
         }
 
